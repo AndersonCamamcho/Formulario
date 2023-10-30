@@ -10,7 +10,7 @@ for i in range(1,formularios+1):
 
 # Inicio furmulario que obtiene el nombre del formulario:
 
-    nombre_formulario = input("Por favor ingrese un nombre para el formulario que no pase de 20 caracteres: ")
+    nombre_formulario = input("Por favor ingrese un nombre para el formulario, sin que pase de 20 caracteres: ")
     validar_nombre = len(nombre_formulario)
 
     if validar_nombre <= 20:
@@ -21,18 +21,22 @@ for i in range(1,formularios+1):
 
 
 #Inicio formulario de edad
+    while True:
+            try:
+                edad_formulario = int(input("Ingrese aqui su edad: "))
+                if 18 <= edad_formulario <= 100:
+                    edad.append(edad_formulario)
+                    break
+                else:
+                    print("Recuerde que la edad debe estar entre 18 y 100 años, por favor intente de nuevo.")
+            except ValueError:
+                print("No esta ingresando numeros enteros, por favor intente de nuevo: ")
 
-    edad_formulario = int(input("Ingrese su edad: "))
-    if edad_formulario >= 18 or edad <= 100:
-        edad.append(edad_formulario)
-    else:
-        print("Edad invalida, inicie de nuevo el proceso")
-        break
 
 #Inicio formulario de fecha de expeidción
 
     fecha_ingresada = input("Ingrese la fecha de expedicion con el siguiente formato: dia-mes-año:   ")
-    fecha_formulario= datetime.datetime.strptime(fecha_ingresada, "%d-%m-%y")
+    fecha_formulario= datetime.datetime.strptime(fecha_ingresada, "%d/%m/%Y")
     if fecha_formulario < datetime.datetime.now():
         fecha_expedicion.append(fecha_formulario)
     else:
