@@ -1,5 +1,11 @@
 import datetime
 
+# Variables:
+nombre = []
+edad = []
+fecha_expedicion = []
+fecha_actual = datetime.datetime.now()
+
 while True:
     try:
         formularios = int(input(" » Ingrese aqui la cantidad de personas a registrar: "))
@@ -10,9 +16,7 @@ while True:
 
     except ValueError:
         print("Entrada no valida, el valor proporcionado debe ser un entero.")
-nombre = []
-edad = []
-fecha_expedicion = []
+
 
 for i in range(1,formularios+1):
 
@@ -27,7 +31,7 @@ for i in range(1,formularios+1):
             nombre.append(nombre_formulario)
             break
         else:
-            print("Entrada incorrecta, asegurese de que el primer caracter no sea un espacio")
+            print("Entrada incorrecta.")
 
 
 
@@ -48,14 +52,21 @@ for i in range(1,formularios+1):
 
 
 # Inicio obtención de fecha de expeidción para el formulario:
+    while True:
+        try:
+            fecha_ingresada = input(" » Ingrese aqui la fecha de expedicion con el siguiente formato: dia/mes/año(completo):   ")
+            fecha_formulario= datetime.datetime.strptime(fecha_ingresada, "%d/%m/%Y")
 
-    fecha_ingresada = input(" » Ingrese aqui la fecha de expedicion con el siguiente formato: dia/mes/año(completo):   ")
-    fecha_formulario= datetime.datetime.strptime(fecha_ingresada, "%d/%m/%Y")
-    if fecha_formulario < datetime.datetime.now():
-        fecha_expedicion.append(fecha_formulario)
-    else:
-        print("Esta ingresando un formato incorrecto")
-        break
+            fecha_por_validar = fecha_actual.year - fecha_formulario.year
+            if 0 <= fecha_por_validar <= 100:
+                fecha_expedicion.append(fecha_formulario)
+                break
+            else:
+                print("La fecha ingresada no debe ser mayor a 100, ni menor a 0 años, intente de nuevo.")
+
+
+        except ValueError:
+            print("Esta ingresando un formato incorrecto, recuerde que debe ser: dia/mes/año(completo)")
 
 
 
