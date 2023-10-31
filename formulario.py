@@ -20,6 +20,11 @@ while True:
 
 for i in range(1,formularios+1):
 
+    if i > 1:
+        print("     **********************  *  *  *  ****************************")
+        print("                   INICIO NUEVO FORMULARIO")
+        print("     **********************  *  *  *  ****************************")
+
 
 # Inicio ontención de nombre para el formulario:
 
@@ -73,9 +78,14 @@ for i in range(1,formularios+1):
 
 
     if i == formularios:
-        print("***************  * *************  *  ****************   *    ********************")
-        print("Los datos recoletados para los nombres del formulario son : ", nombre)
-        print("Los datos recoletados para edades del formulario son : ", edad)
-        print("Los datos recoletados para fechas de expedición del formulario son : ", fecha_expedicion)
-        print("***************  * *************  *  ****************   *    ********************")
+
+        for j in range(0,formularios):
+
+            print("")
+            print("***********  *  *****  *  *****  *  **********")
+            print(nombre[j].upper())
+            print("   Edad : ", edad[j])
+            print("   fecha de expedición : ", fecha_expedicion[j].strftime("%d/%m/%Y"))
+            print("***********  *  *****  *  *****  *  **********")
+            print("")
 
